@@ -57,12 +57,7 @@ def main():
             name = input('Digite o nome do contato: ')
             date = input('Digite a data de aniversário do contato: ')
 
-            validateDate = schedule.insertFriend(name, date)
-            if validateDate is False:
-                print('Utilize datas como por exemplo: 06/01/99 , 07/03/79, seguindo este formato dd/mm/aa')
-                print('Você irá voltar ao menu principal...')
-                print()
-                continue
+            schedule.insertFriend(name, date)
 
         if option == '2':
             contato = input('Digite o nome do contato ou a posição: ')
