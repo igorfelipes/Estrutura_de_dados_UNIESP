@@ -1,15 +1,3 @@
-import datetime
-
-"""
-
-Crie uma agenda eletrônica que contenha dois vetores:
-um array com o nome dos seus amigos e outro com as suas respectivas datas de aniversário.
-Tente inserir e remover as informações da agenda de maneira dinâmica (apagando pelo nome ou posição,
-inserindo n usuários por vez caso queira, etc...).
-
-"""
-
-
 class Schedule:
 
     def __init__(self):
