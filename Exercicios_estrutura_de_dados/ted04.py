@@ -42,9 +42,9 @@ class SheldonGame:
             return False
 
     def separateOptions(self, options):
-        separateOptions = options.split()
-        self.sheldonOption = separateOptions[0].lower()
-        self.rajOption = separateOptions[1].lower()
+        splitOptions = options.split()
+        self.sheldonOption = splitOptions[0].lower()
+        self.rajOption = splitOptions[1].lower()
 
     def checkAttempts(self):
 
