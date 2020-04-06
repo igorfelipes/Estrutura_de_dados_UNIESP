@@ -55,6 +55,8 @@ class SheldonGame:
 def main():
     sheldonGame = SheldonGame()
     print('--------------------GAME---------------------')
+    print('Pedra - Papel - Tesoura - Lagarto - Spock')
+    print()
     options = input('Digite suas opções: ')
     sheldonGame.separateOptions(options)
     sheldonGame.checkAttempts()
