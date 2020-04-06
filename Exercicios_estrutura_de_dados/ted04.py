@@ -27,7 +27,6 @@ class SheldonGame:
         return False
 
     def separateOptions(self, options):
-
         separateOptions = options.split()
         self.sheldonOption = separateOptions[0].lower()
         self.rajOption = separateOptions[1].lower()
