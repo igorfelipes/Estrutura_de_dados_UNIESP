@@ -17,7 +17,7 @@ class SheldonGame:
             return self.handlingInputErrors()
         return True
 
-    def tieCase(self, sheldonOption, rajOption):
+    def tiedCase(self, sheldonOption, rajOption):
         if sheldonOption == rajOption:
             print(f'Caso #{self.attemptCounter}: De novo!')
             options = input('Digite suas opções novamente: ')
@@ -36,10 +36,10 @@ class SheldonGame:
         if self.attemptCounter < self.MAX_ATTEMPTS:
 
             self.handlingInputErrors()
-            returnTieCase = self.tieCase(self.sheldonOption, self.rajOption)
+            returnTiedCase = self.tiedCase(self.sheldonOption, self.rajOption)
 
-            if returnTieCase:
-                options = returnTieCase
+            if returnTiedCase:
+                options = returnTiedCase
                 self.separateOptions(options)
                 return self.checkAttempts()
 
