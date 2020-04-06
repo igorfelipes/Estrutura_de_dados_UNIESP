@@ -5,10 +5,20 @@ class SheldonGame:
                             'tesoura': ['papel', 'lagarto'],
                             'lagarto': ['spock', 'papel'],
                             'spock': ['tesoura', 'pedra']}
-        self.attemptCounter = 1
-        self.MAX_ATTEMPTS = 100
+        self.attemptCounter = 0
+        self.MAX_ATTEMPTS = None
         self.sheldonOption = sheldonOption
         self.rajOption = rajOption
+
+    def checkMaxAttempts(self, maxAttempts):
+        if maxAttempts.isnumeric():
+            self.MAX_ATTEMPTS = int(maxAttempts)
+        else:
+            maxAttempts = input('Invalid Number, Digite a novamente a quantidade de casos que deseja tentar:')
+            return self.checkMaxAttempts(maxAttempts)
+        if self.MAX_ATTEMPTS > 100:
+            self.MAX_ATTEMPTS = 100
+            print('Seu número de tentativas ultrapassou o limite, reformatamos o limite para 100')
 
     def handlingInputErrors(self):
         if self.sheldonOption and self.rajOption not in self.successCase:
@@ -17,14 +27,19 @@ class SheldonGame:
             return self.handlingInputErrors()
         return True
 
-    def checkTieCase(self, sheldonOption, rajOption):
-        if sheldonOption == rajOption:
+    def checkTieCase(self):
+        if self.sheldonOption == self.rajOption:
             print(f'Caso #{self.attemptCounter}: De novo!')
-            options = input('Digite suas opções novamente: ')
-            self.attemptCounter += 1
-            return options
-
+            return True
         return False
+
+    def checkSuccessCase(self):
+        if self.rajOption in self.successCase[self.sheldonOption]:
+            print(f'Caso #{self.attemptCounter}: Bazinga!')
+            return True
+        else:
+            print(f'Caso #{self.attemptCounter}: Raj trapaceou!')
+            return False
 
     def separateOptions(self, options):
         separateOptions = options.split()
@@ -34,21 +49,22 @@ class SheldonGame:
     def checkAttempts(self):
 
         if self.attemptCounter < self.MAX_ATTEMPTS:
-
+            self.enterOptions()
             self.handlingInputErrors()
-            returnTiedCase = self.checkTieCase(self.sheldonOption, self.rajOption)
 
-            if returnTiedCase:
-                options = returnTiedCase
-                self.separateOptions(options)
+            if self.checkTieCase():
                 return self.checkAttempts()
-
-            if self.rajOption in self.successCase[self.sheldonOption]:
-                return print(f'Caso #{self.attemptCounter}: Bazinga!')
+            elif self.checkSuccessCase():
+                return self.checkAttempts()
             else:
-                return print(f'Caso #{self.attemptCounter}: Raj trapaceou!')
+                return self.checkAttempts()
         else:
             print('Você ultrapassou o máximo de tentativas!')
+
+    def enterOptions(self):
+        options = input('Digite suas opções: ')
+        self.separateOptions(options)
+        self.attemptCounter += 1
 
 
 def main():
@@ -56,8 +72,8 @@ def main():
     print('--------------------GAME---------------------')
     print('Pedra - Papel - Tesoura - Lagarto - Spock')
     print()
-    options = input('Digite suas opções: ')
-    sheldonGame.separateOptions(options)
+    attempts = input('Digite a quantidade de casos que deseja tentar: ')
+    sheldonGame.checkMaxAttempts(attempts)
     sheldonGame.checkAttempts()
 
 
