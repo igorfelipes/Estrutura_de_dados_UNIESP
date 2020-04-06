@@ -1,10 +1,10 @@
 class SheldonGame:
     def __init__(self, sheldonOption=None, rajOption=None):
         self.successCase = {'pedra': ['lagarto', 'tesoura'],
-                             'papel': ['pedra', 'spock'],
-                             'tesoura': ['papel', 'lagarto'],
-                             'lagarto': ['spock', 'papel'],
-                             'spock': ['tesoura', 'pedra']}
+                            'papel': ['pedra', 'spock'],
+                            'tesoura': ['papel', 'lagarto'],
+                            'lagarto': ['spock', 'papel'],
+                            'spock': ['tesoura', 'pedra']}
         self.attemptCounter = 1
         self.MAX_ATTEMPTS = 100
         self.sheldonOption = sheldonOption
@@ -17,7 +17,7 @@ class SheldonGame:
             return self.handlingInputErrors()
         return True
 
-    def tiedCase(self, sheldonOption, rajOption):
+    def checkTieCase(self, sheldonOption, rajOption):
         if sheldonOption == rajOption:
             print(f'Caso #{self.attemptCounter}: De novo!')
             options = input('Digite suas opções novamente: ')
@@ -36,7 +36,7 @@ class SheldonGame:
         if self.attemptCounter < self.MAX_ATTEMPTS:
 
             self.handlingInputErrors()
-            returnTiedCase = self.tiedCase(self.sheldonOption, self.rajOption)
+            returnTiedCase = self.checkTieCase(self.sheldonOption, self.rajOption)
 
             if returnTiedCase:
                 options = returnTiedCase
