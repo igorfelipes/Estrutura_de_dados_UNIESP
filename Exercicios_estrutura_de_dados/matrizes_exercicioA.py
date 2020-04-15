@@ -1,6 +1,6 @@
 def main():
     matriz = [['uniesp', 'joão pessoa'],
-             ['ufcg', 'campina grande']]
+              ['ufcg', 'campina grande']]
 
     print(matriz)
 
