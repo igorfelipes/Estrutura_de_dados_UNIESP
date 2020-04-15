@@ -3,7 +3,8 @@ def main():
               [21, 83, 92],
               [21, 83, 43]]
 
-    print(matriz)
+    matrizVezesSete = [[number * 7for number in array] for array in matriz]
+    print(matrizVezesSete)
 
 
 if __name__ == '__main__':
