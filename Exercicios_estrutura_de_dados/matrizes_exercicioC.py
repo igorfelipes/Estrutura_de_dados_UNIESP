@@ -1,8 +1,13 @@
 def main():
-    matriz = [['uniesp', 'joão pessoa'],
-             ['ufcg', 'campina grande']]
+    matriz = [[39, 14, 27],
+              [21, 83, 92],
+              [21, 83, 43]]
 
-    print(matriz)
+    print('Matriz antiga: ', matriz)
+    for array in matriz:
+        array.pop()
+
+    print('Matriz nova: ', matriz)
 
 
 if __name__ == '__main__':
