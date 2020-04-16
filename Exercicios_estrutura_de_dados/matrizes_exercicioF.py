@@ -1,5 +1,5 @@
 def main():
-    matriz = [[input('Digite separado por um espaço o nome, matricula e data do aluno em cada linha respectivamente: ').strip() for _ in range(3)]for _ in range(3)]
+    matriz = [[input(f'Digite o nome, matricula e data do aluno {number+1} em cada linha respectivamente: ').strip() for _ in range(3)] for number in range(3)]
     print(matriz)
 
 
