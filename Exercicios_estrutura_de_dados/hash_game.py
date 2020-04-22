@@ -85,15 +85,18 @@ class HashGame:
                 self.matrizPrincipal[self.line][self.col] = self.player2[1]
 
         for index in range(len(self.matrizPrincipal)):
-            if all(value == self.player1[1] for value in self.matrizPrincipal[index]) or all(row[index] == self.player1[1] for row in self.matrizPrincipal):
+            if all(value == self.player1[1] for value in self.matrizPrincipal[index]) or all(row[index] == self.player1[1] for row in self.matrizPrincipal) \
+                    or all([self.matrizPrincipal[size][size] == self.player1[1] for size in range(len(self.matrizPrincipal))])\
+                    or all(self.matrizPrincipal[len(self.matrizPrincipal)-1 - size][size] == self.player1[1] for size in range(len(self.matrizPrincipal)-1, -1, -1)):
                 self.printGame()
                 self.gameEnd = True
                 return print(self.player1[0], 'Venceu!')
-            elif all(value == self.player2[1] for value in self.matrizPrincipal[index]) or all(row[index] == self.player2[1] for row in self.matrizPrincipal):
+            elif all(value == self.player2[1] for value in self.matrizPrincipal[index]) or all(row[index] == self.player2[1] for row in self.matrizPrincipal)\
+                    or all([self.matrizPrincipal[size][size] == self.player2[1] for size in range(len(self.matrizPrincipal))])\
+                    or all(self.matrizPrincipal[len(self.matrizPrincipal)-1 - size][size] == self.player2[1] for size in range(len(self.matrizPrincipal)-1, -1, -1)):
                 self.printGame()
                 self.gameEnd = True
                 return print(self.player2[0], 'Venceu!')
-
 
 
 def main():
