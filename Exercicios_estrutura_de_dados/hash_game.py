@@ -55,7 +55,6 @@ class HashGame:
                 positions = input('Digite a coluna  e a linha separado por um espaço em branco:  ').split()
                 self.convertPositions(positions)
                 self.verifyPositions()
-                self.matrizPrincipal[self.line][self.col] = self.player2[1]
                 self.counter = 1
 
     def printGame(self):
@@ -80,14 +79,17 @@ class HashGame:
             print('Posição já selecionada por algum jogador, tente novamente')
             self.setPositions()
         else:
-            self.matrizPrincipal[self.line][self.col] = self.player1[1]
+            if self.counter == 1:
+                self.matrizPrincipal[self.line][self.col] = self.player1[1]
+            else:
+                self.matrizPrincipal[self.line][self.col] = self.player2[1]
 
         for index in range(len(self.matrizPrincipal)):
-            if all(value == self.player1[1] for value in self.matrizPrincipal[index]):
+            if all(value == self.player1[1] for value in self.matrizPrincipal[index]) or all(row[index] == self.player1[1] for row in self.matrizPrincipal):
                 self.printGame()
                 self.gameEnd = True
                 return print(self.player1[0], 'Venceu!')
-            elif all(value == self.player2[1] for value in self.matrizPrincipal[index]):
+            elif all(value == self.player2[1] for value in self.matrizPrincipal[index]) or all(row[index] == self.player2[1] for row in self.matrizPrincipal):
                 self.printGame()
                 self.gameEnd = True
                 return print(self.player2[0], 'Venceu!')
