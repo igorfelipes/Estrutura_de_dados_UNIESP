@@ -12,6 +12,7 @@ class HashGame:
         self.counter = 1
         self.col = 0
         self.line = 0
+        self.numberOfMoves = 0
         self.gameEnd = False
 
     def handlerError(self):
@@ -81,8 +82,10 @@ class HashGame:
         else:
             if self.counter == 1:
                 self.matrizPrincipal[self.line][self.col] = self.player1[1]
+                self.numberOfMoves += 1
             else:
                 self.matrizPrincipal[self.line][self.col] = self.player2[1]
+                self.numberOfMoves += 1
 
         for index in range(len(self.matrizPrincipal)):
             if all(value == self.player1[1] for value in self.matrizPrincipal[index]) or all(row[index] == self.player1[1] for row in self.matrizPrincipal) \
@@ -99,6 +102,11 @@ class HashGame:
                 self.gameEnd = True
                 print()
                 return print('\033[0;32m ', self.player2[0], 'Venceu!\033[0;0m')
+            elif self.numberOfMoves == 9:
+                self.printGame()
+                self.gameEnd = True
+                print()
+                print('Velha! Jogo empatado')
 
 
 def main():
